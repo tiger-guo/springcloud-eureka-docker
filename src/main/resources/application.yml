@@ -1,0 +1,13 @@
+server:
+  port: 8080
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    # registerWithEureka: 表示是否需要将自身也加入 Eureka Server 中，默认为 true。当前实例本身就是 Eureka Server，故设置为 false。
+    registerWithEureka: false
+    # tchRegistry：是否需要从其他 Eureka Server 获取注册信息，默认为 true。本次实验采用的是一个单点 Server，无需同步其他 Server 的注册信息，故设置为 false。
+    fetchRegistry: false
+    serviceUrl:
+      # 当前 Eureka Server 的交互地址，多个地址可用 ',' 号隔开。
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
